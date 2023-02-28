@@ -15,7 +15,7 @@ clf = DecisionTreeClassifier()
 svm = SVC()
 
 
-ensemble = RandomForestClassifier(n_estimators=10, base_estimator=[dt, svm])
+ensemble = RandomForestClassifier(n_estimators=10, base_estimator=[clf, svm])
 
 
 ensemble.fit(X_train, y_train)
