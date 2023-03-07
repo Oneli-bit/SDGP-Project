@@ -1,29 +1,27 @@
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC
-from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import VotingClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
+cell_df=pd.read_csv("https://raw.githubusercontent.com/Thegreatesthumphrey/Prediction-Model-for-Total-Body-Fat-in-Adult-Men/master/Bodyfat.csv")
+cell_df.head()
+cell_df.tail()
 
-df = pd.read_csv('bodyfat.csv')
+X = cell_df.iloc[:, :-1]
+y = cell_df.iloc[:, -1]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-X_train, X_test, y_train, y_test = train_test_split(df.data, df.target, test_size=0.2, random_state=42)
+svm_clf = SVC(kernel='linear', C=0.025)
+tree_clf = DecisionTreeClassifier(max_depth=3)
 
+voting_clf = VotingClassifier(estimators=[('svm', svm_clf), ('tree', tree_clf)], voting='hard')
+voting_clf.fit(X_train, y_train)
 
-clf = DecisionTreeClassifier()
-svm = SVC()
-
-
-ensemble = RandomForestClassifier(n_estimators=10, base_estimator=[clf, svm])
-
-
-ensemble.fit(X_train, y_train)
-
-
-y_pred = ensemble.predict(X_test)
-
-
+y_pred = voting_clf.predict(X_test)
 
 accuracy = accuracy_score(y_test, y_pred)
-print("Accuracy:", accuracy)
+print('Accuracy: ', accuracy)
