@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "392399085584",
+    "project_id": "sdgp-fe1ee",
+    "storage_bucket": "sdgp-fe1ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392399085584:android:2af73bcdac9e7d57df6a95",
+        "android_client_info": {
+          "package_name": "com.example.sdgp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392399085584-bda07014fcg0dtcn3juni3e2q679vvq2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD67dASV-FJJITgdGlNAPLu046qWuTqx2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392399085584-bda07014fcg0dtcn3juni3e2q679vvq2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
