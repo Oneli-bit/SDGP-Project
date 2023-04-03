@@ -32,9 +32,11 @@ jobs:
       run: mkdir path/to/project     
 
 
-    - name: Build APK
-      run: ./gradlew assembleDebug
-
+    - name: Grant execute permission to gradlew
+      run: chmod +x gradlew
+    
+    - name: Build Android Application
+      run: ./gradlew build
     - name: Run tests
       run: ./gradlew test
       
