@@ -16,6 +16,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '18.0.1.1'
+        distribution: 'adopt'
 
     - name: Build with Gradle
       run: ./gradlew build
