@@ -29,10 +29,10 @@ jobs:
         sdk-version: '31'
         
     - name: Create project directory
-      run: mkdir path/to/project     
+      run: mkdir path/to/project 
+      
     - name: Install dependencies
-        run:|
-        pip install jupyter
+      run: pip install jupyter
         
     - name: Run Jupyter Notebook
         uses:gabrielwong159/jupyterlab-action@v1.1.0
