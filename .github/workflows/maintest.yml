@@ -33,6 +33,7 @@ jobs:
     - name: Install dependencies
         run:|
         pip install jupyter
+        
     - name: Run Jupyter Notebook
         uses:gabrielwong159/jupyterlab-action@v1.1.0
       with:
