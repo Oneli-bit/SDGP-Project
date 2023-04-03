@@ -30,7 +30,13 @@ jobs:
         
     - name: Create project directory
       run: mkdir path/to/project     
-
+    - name: Install dependencies
+        run:|
+        pip install jupyter
+    - name: Run Jupyter Notebook
+        uses:gabrielwong159/jupyterlab-action@v1.1.0
+      with:
+          notebook_file: first.ipynb
 
       
     - name: Run Python Script for Machine Learning Hybrid Model
