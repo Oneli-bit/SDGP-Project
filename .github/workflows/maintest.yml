@@ -34,7 +34,6 @@ jobs:
 
 
       
-    - name: Run Python Script for Machine Learning Hybrid Model
-      run: first.ipynb
+ 
 
  
