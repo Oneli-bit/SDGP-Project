@@ -28,6 +28,8 @@ jobs:
       with:
         sdk-version: '31'
         
+    - name: Create project directory
+      run: mkdir path/to/project     
 
 
     - name: Build APK
