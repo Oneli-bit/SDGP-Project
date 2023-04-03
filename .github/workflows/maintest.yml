@@ -18,15 +18,28 @@ jobs:
         java-version: '18'
         distribution: 'adopt'
         
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
       with:
         sdk-version: '31'
+        
+    - name: Install required Python libraries
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
     - name: Build APK
       run: ./gradlew assembleDebug
 
     - name: Run tests
       run: ./gradlew test
+      
+    - name: Run Python Script for Machine Learning Hybrid Model
+      run: python ml_hybrid.py
 
  
