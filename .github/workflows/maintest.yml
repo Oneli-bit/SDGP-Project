@@ -23,9 +23,8 @@ jobs:
       with:
         sdk-version: '31'
 
-    - name: Build with Gradle
-      run: ./gradlew build
-      working-directory: path/to/project
+    - name: Build APK
+      run: ./gradlew assembleDebug
 
     - name: Run tests
       run: ./gradlew test
