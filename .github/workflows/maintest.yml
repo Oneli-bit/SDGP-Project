@@ -32,7 +32,7 @@ jobs:
         licenses: ${{ secrets.ANDROID_LICENSES }}
         
     - name: Add ./gradlew to PATH
-      run: export PATH=$PATH:$(pwd)
+      run: "export PATH=$PATH:$(pwd)"
         
     - name: Create project directory
       run: mkdir path/to/project 
