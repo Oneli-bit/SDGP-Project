@@ -31,6 +31,9 @@ jobs:
         build-tools-version: '31.0.0'
         licenses: ${{ secrets.ANDROID_LICENSES }}
         
+    - name: Add ./gradlew to PATH
+      run: export PATH=$PATH:$(pwd)
+        
     - name: Create project directory
       run: mkdir path/to/project 
       
