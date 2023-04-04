@@ -32,7 +32,10 @@ jobs:
         licenses: ${{ secrets.ANDROID_LICENSES }}
         
     - name: Add ./gradlew to PATH
-      run: "export PATH=$PATH:$(pwd)"
+      run: echo "::set-env name=PATH::$(pwd):$PATH"
+    
+    - name: Run ./gradlew assembleDebug
+      run: ./gradlew assembleDebug
         
     - name: Create project directory
       run: mkdir path/to/project 
