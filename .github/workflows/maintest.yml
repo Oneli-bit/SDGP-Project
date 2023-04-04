@@ -2,9 +2,9 @@ name: Android CI/CD
 
 on:
   push:
-    branches: [ Front-end ]
+    branches: [ main ]
   pull_request:
-    branches: [ Front-end ]
+    branches: [ main ]
     
  
 
