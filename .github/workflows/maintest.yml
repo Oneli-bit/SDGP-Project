@@ -27,9 +27,33 @@ jobs:
       uses: android-actions/setup-android@v2
       with:
         sdk-version: '31'
+        ndk-version: '21.4.7075529'
+        build-tools-version: '31.0.0'
+        licenses: ${{ secrets.ANDROID_LICENSES }}
         
     - name: Create project directory
       run: mkdir path/to/project 
+      
+    - name: Build debug APK
+      run: ./gradlew assembleDebug
+
+    - name: Run unit tests
+      run: ./gradlew testDebugUnitTest
+
+    - name: Run UI tests
+      run: ./gradlew connectedDebugAndroidTest
+
+    - name: Check code quality
+      run: ./gradlew lintDebug
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v2
+      with:
+          name: test-results
+          path: |
+            app/build/reports/tests/testDebugUnitTest
+            app/build/reports/androidTests/connected/flavors/Debug/index.html
+            app/build/reports/lint-results.xml
       
 
 
