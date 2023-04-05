@@ -18,7 +18,8 @@ jobs:
 
     - name: Deploy to Elastic Beanstalk
       run: |
-        aws cloudformation deploy --template-file path/to/your/template.yaml --stack-name your-stack-name --capabilities CAPABILITY_NAMED_IAM
+        aws cloudformation deploy --template-file path/to/your/template.yaml --stack-name your-stack-name --capabilities CAPABILITY_NAMED_IAM --region your-region
+
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
