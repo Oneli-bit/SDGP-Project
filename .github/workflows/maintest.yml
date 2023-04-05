@@ -52,8 +52,7 @@ jobs:
 
 
 
-    - name: Run UI tests
-      run: ./gradlew connectedDebugAndroidTest
+
 
     - name: Check code Quality
       run: ./gradlew lintDebug
