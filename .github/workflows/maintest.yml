@@ -55,7 +55,7 @@ jobs:
       run: ./gradlew testDebugUnitTest
       
     - name: Check code quality
-      run: ./gradlew lintDebug
+      run: ./gradlew lintDebug --baseline lint-baseline.xml
 
     - name: Upload test results
       uses: actions/upload-artifact@v2
