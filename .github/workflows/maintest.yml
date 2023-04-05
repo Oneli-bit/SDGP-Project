@@ -44,8 +44,7 @@ jobs:
     - name: Run ./gradlew assembleDebug
       run: ./gradlew assembleDebug
         
-    - name: Create project directory
-      run: mkdir path/to/project 
+
       
     - name: Build debug APK
       run: ./gradlew assembleDebug
