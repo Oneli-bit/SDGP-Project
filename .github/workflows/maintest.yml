@@ -48,11 +48,14 @@ jobs:
     - name: Initialize Gradle Build
       run: gradle init
     
-        
-
-
-
-
+    - name: Build Debug APK
+      run: ./gradlew assembleDebug  
+      
+    - name: Run unit tests
+      run: ./gradlew testDebugUnitTest
+      
+    - name: Run UI tests
+      run: ./gradlew connectedDebugAndroidTest
 
     - name: Check code Quality
       run: ./gradlew lintDebug
