@@ -12,6 +12,7 @@ env:
   ANDROID_SDK_TOOLS: 7583922
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
+
 jobs:
   build-and-deploy:
 
@@ -65,10 +66,9 @@ jobs:
             app/build/reports/tests/testDebugUnitTest
             app/build/reports/androidTests/connected/flavors/Debug/index.html
             app/build/reports/lint-results.xml
+            
 
 
+            
 
-      
- 
 
- 
