@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".PersonalInfo">
+    android:id="@+id/viewProfile"
+    tools:context=".ViewProfile">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -25,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="120dp"
         android:layout_marginTop="24dp"
-        android:text="@string/profile_header"
-        android:textSize="30sp"
+        android:text="Your Profile"
+        android:textSize="35sp"
         android:fontFamily="@font/ronysiswadiarchitect4"
         android:textColor="@color/black"
         android:textAlignment="center"
@@ -82,94 +83,83 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="370dp"
+        android:text="Email Address"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
         android:id="@+id/fName"
-        android:layout_height="40dp"
-        android:layout_width="150dp"
-        android:layout_marginHorizontal="190dp"
-        android:layout_marginTop="120dp"
-        android:inputType="text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="200dp"
+        android:layout_marginTop="130dp"
+        android:text=""
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/lName"
-        android:layout_height="40dp"
-        android:layout_width="150dp"
-        android:layout_marginHorizontal="190dp"
-        android:layout_marginTop="180dp"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <CheckBox
-        android:id="@+id/checkboxMale"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginHorizontal="180dp"
-        android:layout_marginTop="240dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="230dp"
-        android:layout_marginTop="250dp"
-        android:text="Male"
+        android:layout_marginHorizontal="200dp"
+        android:layout_marginTop="190dp"
+        android:text=""
         android:textSize="20sp"
         android:textAlignment="center"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/checkboxFemale"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginHorizontal="280dp"
-        android:layout_marginTop="240dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
     <TextView
+        android:id="@+id/gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="330dp"
+        android:layout_marginHorizontal="200dp"
         android:layout_marginTop="250dp"
-        android:text="Female"
+        android:text=""
         android:textSize="20sp"
         android:textAlignment="center"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/user_dob"
-        android:layout_height="40dp"
-        android:layout_width="150dp"
-        android:layout_marginHorizontal="190dp"
-        android:layout_marginTop="300dp"
-        android:inputType="date"
-        android:clickable="false"
-        android:cursorVisible="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:hint=" _ _  / _ _ / _ _ _ _ "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <Button
-        android:id="@+id/continueNext"
-        android:layout_height="50dp"
-        android:layout_width="150dp"
-        android:layout_marginHorizontal="130dp"
-        android:layout_marginTop="500dp"
-        android:text="@string/continueTo"
-        android:backgroundTint="@color/darkBlue"
+    <TextView
+        android:id="@+id/dob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="200dp"
+        android:layout_marginTop="310dp"
+        android:text=""
         android:textSize="20sp"
-        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="200dp"
+        android:layout_marginTop="370dp"
+        android:text=""
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

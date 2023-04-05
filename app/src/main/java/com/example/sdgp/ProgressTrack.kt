@@ -1,24 +1,27 @@
 package com.example.sdgp
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarDataSet
-import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.jjoe64.graphview.GraphView
-import com.jjoe64.graphview.series.DataPoint
-import com.jjoe64.graphview.series.LineGraphSeries
+import com.google.firebase.database.*
 
 
 class ProgressTrack : AppCompatActivity() {
 
     lateinit var barchart : BarChart
+    var databaseReference: DatabaseReference? = null
+    var firebaseDatabase: FirebaseDatabase? = null
+    private lateinit var userEmail: String
+    private lateinit var fName: String
+    private lateinit var lName: String
+    private lateinit var gender: String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,46 +30,61 @@ class ProgressTrack : AppCompatActivity() {
         val navigation = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
         navigation.selectedItemId = R.id.progress;
+        //barchart = findViewById(R.id.bar_chart)
+        val intent = intent
+        userEmail = intent.getStringExtra("email").toString()
+        fName = intent.getStringExtra("fName").toString()
+        lName = intent.getStringExtra("lName").toString()
+        gender = intent.getStringExtra("gender").toString()
 
         navigation.setOnItemSelectedListener {
             when (it.itemId) {        // add correct activities
                  R.id.calBFP -> {
-                     loadActivity(BFPMales1())
+                     if (gender == "male"){
+                         val intent1 = Intent(applicationContext, BFPMales1::class.java)
+                         intent1.putExtra("gender", gender)
+                         intent1.putExtra("email", userEmail)
+                         intent1.putExtra("fName", fName)
+                         intent1.putExtra("lName", lName)
+                         startActivity(intent1)
+                     }
+                     if (gender == "female"){
+                         val intent2 = Intent(applicationContext, BFPFemales1::class.java)
+                         intent2.putExtra("gender", gender)
+                         intent2.putExtra("email", userEmail)
+                         intent2.putExtra("fName", fName)
+                         intent2.putExtra("lName", lName)
+                         startActivity(intent2)
+                     }
                      true
                  }
                  R.id.workout_plans -> {  // need to change activity
-                     loadActivity(BFPFemales1())
+                     //loadActivity(BFPFemales1())
                      true
                  }
                  R.id.progress -> {
-                     loadActivity(ProgressTrack())
+                     val act = Intent(this, ProgressTrack::class.java)
+                     act.putExtra("email",userEmail)
+                     act.putExtra("fName",fName)
+                     act.putExtra("lName",lName)
+                     act.putExtra("gender",gender)
+                     startActivity(act)
                      true
                  }
-                else -> { loadActivity(ProgressTrack())
+                else -> {
+                    val act = Intent(this, ViewProfile::class.java)
+                    act.putExtra("email",userEmail)
+                    act.putExtra("fName",fName)
+                    act.putExtra("lName",lName)
+                    act.putExtra("gender", gender)
+                    startActivity(act)
                     true}
             }
         }
+        println(userEmail)
+        getBFPData()
 
-        barchart = findViewById(R.id.bar_chart)
-        //var i = 1
-        val barEntries : ArrayList<BarEntry> = ArrayList()
-        /*while (i<=10){
-            val value : Float = (i.toFloat())
-            val barEntry = BarEntry(i.toFloat(),value)
-            barEntries.add(barEntry)
-            i++
-        }*/
-        for (i in 1..10){
-            val value : Float = (i.toFloat())
-            val barEntry = BarEntry(i.toFloat(),value)
-            barEntries.add(barEntry)
-        }
-        val barDataSet = BarDataSet(barEntries,"Fat Percentage")
-        barDataSet.colors = ColorTemplate.COLORFUL_COLORS.toMutableList()
-        barDataSet.setDrawValues(false)
-        barchart.data = BarData(barDataSet)
-        barchart.animateY(5000)
-        barchart.description.isEnabled = false
+
     }
 
     private  fun loadActivity(activity: Activity){   // bottom nav bar
@@ -74,39 +92,58 @@ class ProgressTrack : AppCompatActivity() {
         startActivity(act)
 
     }
+
+    private fun getBFPData() {
+        val attempt1 = findViewById<TextView>(R.id.attempt1)
+        val attempt2 = findViewById<TextView>(R.id.attempt2)
+        val attempt3 = findViewById<TextView>(R.id.attempt3)
+        val attempt4 = findViewById<TextView>(R.id.attempt4)
+        val attempt5 = findViewById<TextView>(R.id.attempt5)
+
+        firebaseDatabase = FirebaseDatabase.getInstance()
+        // below line is used to get
+        // reference for our database.
+        // below line is used to get
+        // reference for our database.
+        databaseReference = firebaseDatabase!!.getReference("BFP Percentage")
+
+        val query: Query = databaseReference!!.orderByChild("email").equalTo(userEmail)
+
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (userSnapshot in snapshot.children) {
+                    val a1 = userSnapshot.child("0").getValue(String()::class.java)
+                    val a2 = userSnapshot.child("1").getValue(String()::class.java)
+                    val a3 = userSnapshot.child("2").getValue(String()::class.java)
+                    val a4 = userSnapshot.child("3").getValue(String()::class.java)
+                    val a5 = userSnapshot.child("4").getValue(String()::class.java)
+                    println(userEmail)
+                    println(a1)
+                    println(a2)
+                    if (a1 != null) {
+                        attempt1.setText(a1.toString()+" %")
+                    }
+                    if (a2 != null) {
+                        attempt2.setText(a2.toString()+" %")
+                    }
+                    if (a3 != null) {
+                        attempt3.setText(a3.toString()+" %")
+                    }
+                    if (a4 != null) {
+                        attempt4.setText(a4.toString()+" %")
+                    }
+                    if (a5 != null) {
+                        attempt5.setText(a5.toString()+" %")
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e(TAG, "Error retrieving user data: " + error.message)
+            }
+        })
+
+    }
+
+
 }
-
-/*   val graphView = findViewById<GraphView>(R.id.idGraphView)
-
-        val series: LineGraphSeries<DataPoint> = LineGraphSeries(
-            arrayOf( // on below line we are adding
-                // each point on our x(attempt) and y axis(bfp).
-
-               *//* DataPoint(0.0, 1.0),
-                DataPoint(1.0, 3.0),
-                DataPoint(2.0, 4.0),
-                DataPoint(3.0, 9.0),
-                DataPoint(4.0, 6.0),
-                DataPoint(5.0, 3.0),
-                DataPoint(6.0, 6.0),
-                DataPoint(7.0, 1.0),
-                DataPoint(8.0, 2.0)*//*
-                DataPoint(0.0, 20.0),
-                DataPoint(20.0, 10.0),
-
-            )
-        )
-
-        graphView.setTitle("Body Fat Percentage");
-
-        // on below line we are setting
-        // text color to our graph view.
-        graphView.setTitleColor(R.color.purple_200);
-
-        // on below line we are setting
-        // our title text size.
-        graphView.setTitleTextSize(50F);
-
-        // on below line we are adding
-        // data series to our graph view.
-        graphView.addSeries(series);*/

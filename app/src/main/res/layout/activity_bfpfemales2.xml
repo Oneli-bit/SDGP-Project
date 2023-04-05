@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pink"
+    android:background="@color/white"
     tools:context=".BFPFemales2">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:itemBackground="@color/nav_female"
+        app:itemBackground="@color/nav"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/drawer_menu"/>
@@ -122,7 +122,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="35dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="cm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -133,7 +133,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="90dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="@string/cm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -144,7 +144,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="145dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="@string/cm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -155,7 +155,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="200dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="@string/cm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -166,7 +166,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="255dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="@string/cm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -177,7 +177,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="310dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="@string/cm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -188,7 +188,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="365dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="@string/cm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -199,7 +199,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="420dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="@string/cm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -211,11 +211,24 @@
         android:layout_marginHorizontal="130dp"
         android:layout_marginTop="520dp"
         android:text="@string/calculate"
-        android:backgroundTint="@color/btnPink"
+        android:backgroundTint="@color/darkBlue"
         android:textSize="18sp"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="500dp"
+        android:text=""
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

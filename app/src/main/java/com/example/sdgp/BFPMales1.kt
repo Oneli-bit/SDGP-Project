@@ -2,19 +2,35 @@ package com.example.sdgp
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BFPMales1 : AppCompatActivity() {
+
+    private lateinit var userEmail: String
+    private lateinit var fName: String
+    private lateinit var lName: String
+    private lateinit var gender: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bfpmales1)
 
+        val intent = intent
+        userEmail = intent.getStringExtra("email").toString()
+        fName = intent.getStringExtra("fName").toString()
+        lName = intent.getStringExtra("lName").toString()
+        gender = intent.getStringExtra("gender").toString()
+
+        println(userEmail)
+        println(fName)
+        println(lName)
+
+        val navigation = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val continueNext = findViewById<Button>(R.id.nextBFPInputsM)
         val ageM = findViewById<EditText>(R.id.ageInputM)
         val weightM = findViewById<EditText>(R.id.weightInputM)
@@ -24,14 +40,17 @@ class BFPMales1 : AppCompatActivity() {
         val abdomen2M = findViewById<EditText>(R.id.abdomen2InputM)
         val hipM = findViewById<EditText>(R.id.hipInputM)
 
-        val navigation = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-
         navigation.selectedItemId = R.id.calBFP
 
         navigation.setOnItemSelectedListener {
             when (it.itemId) {        // add correct activities
                 R.id.calBFP -> {
-                    loadActivity(BFPMales1())
+                    val intent1 = Intent(applicationContext, BFPMales1::class.java)
+                    intent1.putExtra("gender", gender)
+                    intent1.putExtra("email", userEmail)
+                    intent1.putExtra("fName", fName)
+                    intent1.putExtra("lName", lName)
+                    startActivity(intent1)
                     true
                 }
                 R.id.workout_plans -> {  // need to change activity
@@ -39,10 +58,21 @@ class BFPMales1 : AppCompatActivity() {
                     true
                 }
                 R.id.progress -> {
-                    loadActivity(ProgressTrack())
+                    val act = Intent(this, ProgressTrack::class.java)
+                    act.putExtra("email",userEmail)
+                    act.putExtra("fName",fName)
+                    act.putExtra("lName",lName)
+                    act.putExtra("gender",gender)
+                    startActivity(act)
                     true
                 }
-                else -> { loadActivity(ProgressTrack())
+                else -> {
+                    val act = Intent(this, ViewProfile::class.java)
+                    act.putExtra("email",userEmail)
+                    act.putExtra("fName",fName)
+                    act.putExtra("lName",lName)
+                    act.putExtra("gender", gender)
+                    startActivity(act)
                     true}
             }
         }
@@ -90,6 +120,10 @@ class BFPMales1 : AppCompatActivity() {
                 nextInputs.putExtra("chest", chest)
                 nextInputs.putExtra("abdomen2", abdomen2)
                 nextInputs.putExtra("hip", hip)
+                nextInputs.putExtra("email", userEmail)
+                nextInputs.putExtra("fName",fName)
+                nextInputs.putExtra("lName",lName)
+                nextInputs.putExtra("gender",gender)
                 startActivity(nextInputs)
             }
         }

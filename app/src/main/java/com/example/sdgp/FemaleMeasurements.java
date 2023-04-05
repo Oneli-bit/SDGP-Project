@@ -2,7 +2,7 @@ package com.example.sdgp;
 
 public class FemaleMeasurements {
 
-    //private String email;
+    private String email;
     private String age;
     private String weight;
     private String height;
@@ -23,13 +23,13 @@ public class FemaleMeasurements {
 
     public FemaleMeasurements(){}
 
-    /*public String getEmail() {
+    public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }*/
+    }
 
     public String getAge() {
         return age;

@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:background="@color/white"
     tools:context=".BFPMales1">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:itemBackground="@color/nav"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/drawer_menu"/>
 
     <TextView
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginHorizontal="50dp"
         android:layout_marginTop="24dp"
         android:text="@string/calculate_bfp_header"
-        android:textSize="24sp"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="30sp"
+        android:layout_marginHorizontal="12dp"
+        android:fontFamily="@font/ronysiswadiarchitect4"
         android:textColor="@color/black"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,7 +41,9 @@
         android:text="Age"
         android:textSize="18sp"
         android:textColor="@color/black"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,7 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="35dp"
         android:layout_marginTop="360dp"
-        android:text="Abdomen 2 Circumference"
+        android:text="Abdomen Circumference"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:textAlignment="center"
@@ -117,7 +124,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="100dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="@string/years"
         android:textColorHighlight="@color/black"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,10 +136,11 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="150dp"
-        android:inputType="number"
-        android:hint="@string/lbs"
+        android:inputType="numberDecimal"
+        android:hint="Kg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
         android:id="@+id/heightInputM"
@@ -140,7 +148,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="200dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="@string/inches"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -151,7 +159,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="250dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="@string/cm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -162,7 +170,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="300dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="@string/cm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -173,7 +181,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="350dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="@string/cm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -184,7 +192,7 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="280dp"
         android:layout_marginTop="400dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:hint="@string/cm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -202,4 +210,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
