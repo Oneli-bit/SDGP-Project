@@ -66,7 +66,41 @@ jobs:
             app/build/reports/tests/testDebugUnitTest
             app/build/reports/androidTests/connected/flavors/Debug/index.html
             app/build/reports/lint-results.xml
-            
+          
+AWSTemplateFormatVersion: 2019-12-02
+MyApplication:
+  Type: AWS::ElasticBeanstalk::Application
+  Properties:
+    Description: MyApp
+    ApplicationName: FatPercentageCalculater
+MyEnvironment:
+  Type: AWS::ElasticBeanstalk::Environment
+  Properties:
+    ApplicationName: FatPercentageCalculater
+    EnvironmentName: MyEnvironment
+    SolutionStackName: 64bit Amazon Linux 2 v3.3.8 running Corretto 11
+    OptionSettings:
+      - Namespace: aws:elasticbeanstalk:environment
+        OptionName: EnvironmentType
+        Value: LoadBalanced
+      - Namespace: aws:elasticbeanstalk:environment
+        OptionName: LoadBalancerType
+        Value: application
+      - Namespace: aws:elasticbeanstalk:application:environment
+        OptionName: ANDROID_APP_ID
+        Value: com.example.myapp
+      - Namespace: aws:elasticbeanstalk:application:environment
+        OptionName: ANDROID_APP_SECRET
+        Value: myappsecret
+      - Namespace: aws:elasticbeanstalk:container:tomcat:jvmoptions
+        OptionName: JVMOptions
+        Value: -Djava.security.egd=file:/dev/./urandom
+      - Namespace: aws:elasticbeanstalk:container:tomcat:jvmoptions
+        OptionName: Xms
+        Value: 512m
+      - Namespace: aws:elasticbeanstalk:container:tomcat:jvmoptions
+        OptionName: Xmx
+        Value: 512m
 
 
 
