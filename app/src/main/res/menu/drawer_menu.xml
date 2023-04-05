@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item android:id="@+id/profile"
+            android:icon="@drawable/profile_svgrepo_com"
+            android:title="Profile"/>
+        <item android:id="@+id/calBFP"
+            android:icon="@drawable/calculate_svgrepo_com"
+            android:title="BFP Calculate"/>
+        <item android:id="@+id/workout"
+            android:icon="@drawable/baseline_fitness_center_24"
+            android:title="Workout Plans"/>
+        <item android:id="@+id/progress"
+            android:icon="@drawable/data_graph_progress_statistics_svgrepo_com"
+            android:title="Progress Track"/>
+
+
+</menu>
