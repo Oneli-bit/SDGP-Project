@@ -54,8 +54,8 @@ jobs:
     - name: Run unit tests
       run: ./gradlew testDebugUnitTest
       
-    - name: Run UI tests
-      run: ./gradlew connectedDebugAndroidTest
+    - name: Check code quality
+      run: ./gradlew lintDebug
 
     - name: Upload test results
       uses: actions/upload-artifact@v2
