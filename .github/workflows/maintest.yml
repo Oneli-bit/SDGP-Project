@@ -47,7 +47,9 @@ jobs:
     
     - name: Initialize Gradle Build
       run: gradle init
-    
+      
+    - name: Build Debug APK
+      run: ./gradlew assembleDebug
 
 
     - name: Upload test results
