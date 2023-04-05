@@ -49,7 +49,7 @@ jobs:
       run: gradle init
     
     - name: Build Debug APK
-      run: gradle assembleDebug
+      run: ./gradlew assembleDebug
         
 
       
