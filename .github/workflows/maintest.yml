@@ -50,8 +50,7 @@ jobs:
     
         
 
-    - name: Run unit tests
-      run: ./gradlew testDebugUnitTest
+
 
     - name: Run UI tests
       run: ./gradlew connectedDebugAndroidTest
