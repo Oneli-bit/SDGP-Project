@@ -1,1 +1,51 @@
+on
 
+trigger:
+- main
+
+
+pool:
+  vmImage: 'windows-latest'
+
+
+steps:
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: 'keystore.jks'
+    fileName: 'mykeystore.jks'
+
+- script: |
+    
+    export KEYSTORE=mykeystore.jks
+    export KEYSTORE_PASSWORD=$(KEYSTORE_PASSWORD)
+    export KEY_ALIAS=$(KEY_ALIAS)
+    export KEY_PASSWORD=$(KEY_PASSWORD)
+
+  env:
+    KEYSTORE_PASSWORD: $(password) # Store the keystore password in a pipeline variable
+    KEY_ALIAS: $(alias) # Store the key alias in a pipeline variable
+    KEY_PASSWORD: $(keypassword) # Store the key password in a pipeline variable
+
+- task: Gradle@2
+  inputs:
+    # Path to the gradlew script
+    gradleWrapperFile: 'app/gradlew'
+    # Arguments to pass to the gradlew script
+    tasks: 'assembleRelease'
+    # Path to the build output directory
+    workingDirectory: 'app/build/outputs/apk/release'
+
+- task: AzureBlobUpload@3
+  inputs:
+    # Path to the APK file to upload
+    source: 'app-release.apk'
+    # Name of the container in Azure Blob Storage
+    azureContainer: 'mycontainer'
+    # Path to the folder inside the container to upload the file to
+    azureBlob: 'myfolder/app-release.apk'
+    # Azure Blob Storage account name
+    azureSubscription: 'myaccount'
+    # Azure Blob Storage account key
+    azureStorageAccountKey: $(accountkey)
+    # Overwrite the file if it already exists
+    overwrite: true
