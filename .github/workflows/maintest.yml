@@ -67,13 +67,7 @@ jobs:
             app/build/reports/androidTests/connected/flavors/Debug/index.html
             app/build/reports/lint-results.xml
             
-    - name: Upload APK to Azure
-      uses: azure/webapps-deploy@v2
-      with:
-          app-name: FatCalculater
-          slot-name: App
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: app/build/outputs/apk/debug/app-debug.apk
+
 
 
 
