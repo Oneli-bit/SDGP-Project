@@ -49,12 +49,8 @@ jobs:
       run: gradle init
     
     - name: Build Debug APK
-      run: ./gradlew assembleDebug
+      run: ./gradlew assemble
         
-
-      
-    - name: Build debug APK
-      run: ./gradlew assembleDebug
 
     - name: Run unit tests
       run: ./gradlew testDebugUnitTest
