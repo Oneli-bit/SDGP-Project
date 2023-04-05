@@ -20,9 +20,6 @@ jobs:
         choco install awscli -y
         refreshenv
 
-    - name: Deploy to Elastic Beanstalk
-      run: |
-        aws cloudformation deploy --template-file path/to/your/template.yaml --stack-name your-stack-name --capabilities CAPABILITY_NAMED_IAM --region your-region
-
+  
 
 
