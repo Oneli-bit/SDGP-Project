@@ -55,7 +55,7 @@ jobs:
       run: ./gradlew testDebugUnitTest
       
     - name: Check code quality
-      run: ./gradlew lintDebug --baseline=linT-baseline.xml 
+      run: ./gradlew lintDebug linT-baseline.xml 
 
 
     - name: Upload test results
