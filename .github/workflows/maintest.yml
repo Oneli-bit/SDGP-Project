@@ -45,6 +45,9 @@ jobs:
     - name: Add ./gradlew to PATH
       run: echo "::add-path::$(pwd)"
     
+    - name: Initialize Gradle Build
+      run: gradle init
+    
     - name: Build Debug APK
       run: gradle assembleDebug
         
